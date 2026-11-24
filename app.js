@@ -99,8 +99,14 @@ async function loadDoc(lang) {
   if (docs[lang]) return docs[lang];
   showLoader(T[lang].loading, 0);
   const task = pdfjsLib.getDocument({ url: FILES[lang], isEvalSupported: false, enableXfa: false });
-  task.onProgress = ({ loaded, total }) => { if (total) showLoader(T[lang].loadingPct(Math.round(loaded / total * 100)), loaded / total); };
+  let opened = false;
+  task.onProgress = ({ loaded, total }) => {
+    if (opened || !total) return; // pdf.js keeps fetching ranges in the background after the book is shown
+    const f = Math.min(1, loaded / total);
+    showLoader(T[lang].loadingPct(Math.round(f * 100)), f);
+  };
   const pdf = await task.promise;
+  opened = true;
   const first = await pdf.getPage(1);
   const vp = first.getViewport({ scale: 1 });
   const rec = { lang, pdf, n: pdf.numPages, w: vp.width, h: vp.height, tree: [], flat: [], links: new Map(), text: null };
