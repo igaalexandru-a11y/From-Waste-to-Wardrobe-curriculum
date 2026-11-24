@@ -1,13 +1,13 @@
 /* From Waste to Wardrobe – bilingual flipbook (RO / EN)
    Pages are drawn straight from the PDFs with PDF.js, so text stays sharp at every size.
    Book view: StPageFlip page-turn effect. Read view: large pages, zoom, selectable text, search. */
-import * as pdfjsLib from './vendor/pdf.min.js';
+import * as pdfjsLib from './pdf.min.js';
 
-pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('./vendor/pdf.worker.min.js', import.meta.url).href;
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL('./pdf.worker.min.js', import.meta.url).href;
 
 const FILES = {
-  ro: 'pdf/From_Waste_to_Wardrobe_Curriculum_RO.pdf',
-  en: 'pdf/From_Waste_to_Wardrobe_Curriculum_EN.pdf',
+  ro: 'From_Waste_to_Wardrobe_Curriculum_RO.pdf',
+  en: 'From_Waste_to_Wardrobe_Curriculum_EN.pdf',
 };
 
 const rezultate = n => (n % 100 === 0 || n % 100 >= 20) ? `${n} de rezultate` : `${n} rezultate`;

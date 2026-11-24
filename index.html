@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Waste to Wardrobe · Curriculum</title>
+<meta name="description" content="From Waste to Wardrobe – curriculum pentru moda sustenabilă (RO / EN). Proiect Erasmus+ 2024-1-RO01-KA210-SCH-000251840.">
+<meta name="theme-color" content="#123128">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23123128'/%3E%3Cpath d='M9 8h11M9 8v16M9 16h8' stroke='%23f3ede2' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3Cpath d='M20 22h4' stroke='%23d0703f' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-toc" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></symbol>
+    <symbol id="i-read" viewBox="0 0 24 24"><rect x="6" y="3" width="12" height="18" rx="1.5"/><path d="M9 8h6M9 12h6M9 16h4"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 6c-2-1.5-5-2-8-1.5v14c3-.5 6 0 8 1.5 2-1.5 5-2 8-1.5v-14c-3-.5-6 0-8 1.5Z"/><path d="M12 6v14"/></symbol>
+    <symbol id="i-full" viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></symbol>
+    <symbol id="i-exit" viewBox="0 0 24 24"><path d="M9 4v5H4M15 4v5h5M9 20v-5H4M15 20v-5h5"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-open" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="i-prev" viewBox="0 0 24 24"><path d="m15 5-7 7 7 7"/></symbol>
+    <symbol id="i-next" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M8 10.5h5M10.5 8v5"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5M8 10.5h5"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  </defs>
+</svg>
+
+<header class="bar">
+  <div class="brand">
+    <span class="brand-mark" aria-hidden="true"></span>
+    <span class="brand-text"><strong>From Waste to Wardrobe</strong><span id="subtitle">Curriculum pentru moda sustenabilă</span></span>
+  </div>
+
+  <div class="lang" role="group" aria-label="Limba / Language">
+    <button type="button" data-lang="ro" aria-pressed="true">RO</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
+
+  <div class="tools">
+    <button type="button" class="tbtn" id="btnToc" data-tip="toc"><svg><use href="#i-toc"/></svg><span class="lbl" data-t="toc">Cuprins</span></button>
+    <button type="button" class="tbtn" id="btnSearch" data-tip="search"><svg><use href="#i-search"/></svg><span class="lbl" data-t="search">Caută</span></button>
+    <button type="button" class="tbtn" id="btnMode"><svg><use href="#i-read"/></svg><span class="lbl" data-t="toRead">Citire</span></button>
+    <a class="tbtn" id="btnDownload" href="From_Waste_to_Wardrobe_Curriculum_RO.pdf" download><svg><use href="#i-down"/></svg><span class="lbl">PDF</span></a>
+    <a class="tbtn" id="btnOpen" href="./" target="_blank" rel="noopener" hidden><svg><use href="#i-open"/></svg></a>
+    <button type="button" class="tbtn" id="btnFull" hidden><svg><use href="#i-full"/></svg></button>
+  </div>
+</header>
+
+<main id="stage">
+  <section id="bookView" class="view" aria-label="Carte">
+    <div id="bookHolder"></div>
+  </section>
+  <section id="readView" class="view" hidden aria-label="Citire">
+    <div id="pages"></div>
+  </section>
+
+  <div id="loader" role="status">
+    <div class="loader-card">
+      <div class="loader-title">From Waste to Wardrobe</div>
+      <div class="loader-bar"><span id="loaderFill"></span></div>
+      <div class="loader-text" id="loaderText">Se încarcă…</div>
+    </div>
+  </div>
+  <div id="error" hidden role="alert"></div>
+</main>
+
+<nav class="nav" aria-label="Navigare">
+  <button type="button" class="nbtn" id="btnPrev"><svg><use href="#i-prev"/></svg></button>
+  <div class="pageinfo">
+    <label class="sr" for="pageInput" data-t="pageLabel">Pagina</label>
+    <input id="pageInput" type="text" inputmode="numeric" autocomplete="off" value="1">
+    <span id="pageSpread" class="spread"></span>
+    <span class="of">/ <span id="pageTotal">–</span></span>
+  </div>
+  <button type="button" class="nbtn" id="btnNext"><svg><use href="#i-next"/></svg></button>
+  <div class="zoom" id="zoomBox" hidden>
+    <button type="button" class="nbtn" id="btnZoomOut"><svg><use href="#i-minus"/></svg></button>
+    <span id="zoomLevel" class="zlevel">100%</span>
+    <button type="button" class="nbtn" id="btnZoomIn"><svg><use href="#i-plus"/></svg></button>
+  </div>
+</nav>
+
+<aside id="tocPanel" class="panel left" hidden aria-labelledby="tocTitle">
+  <div class="panel-head">
+    <h2 id="tocTitle" data-t="toc">Cuprins</h2>
+    <button type="button" class="xbtn" data-close><svg><use href="#i-close"/></svg></button>
+  </div>
+  <ol id="tocList" class="toc"></ol>
+  <div class="panel-foot">
+    <a href="From_Waste_to_Wardrobe_Curriculum_RO.pdf" download><svg><use href="#i-down"/></svg><span data-t="dlRo">PDF în limba română</span></a>
+    <a href="From_Waste_to_Wardrobe_Curriculum_EN.pdf" download><svg><use href="#i-down"/></svg><span data-t="dlEn">PDF în limba engleză</span></a>
+    <p class="fund" data-t="fund">Proiect Erasmus+ 2024-1-RO01-KA210-SCH-000251840 · Finanțat de Uniunea Europeană</p>
+  </div>
+</aside>
+
+<aside id="searchPanel" class="panel right" hidden aria-labelledby="searchTitle">
+  <div class="panel-head">
+    <h2 id="searchTitle" data-t="search">Caută</h2>
+    <button type="button" class="xbtn" data-close><svg><use href="#i-close"/></svg></button>
+  </div>
+  <form id="searchForm" class="search-form" role="search">
+    <input id="searchInput" type="search" autocomplete="off" spellcheck="false">
+  </form>
+  <p id="searchStatus" class="search-status" aria-live="polite"></p>
+  <ol id="searchResults" class="results"></ol>
+</aside>
+<div id="scrim" hidden></div>
+
+<script src="page-flip.browser.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
